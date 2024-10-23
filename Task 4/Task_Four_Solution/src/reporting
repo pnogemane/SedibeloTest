@@ -1,0 +1,23 @@
+const User = require('./models/User');  
+
+// Generate report of Mechanics reporting to Michael Phalane
+const generateReport = async () => {
+  try {
+    const reportData = await User.aggregate([
+      { $match: { department: 'Engineering' } },
+      {
+        $group: {
+          _id: '$manager',
+          employees: { $push: { name: '$name', role: '$designation' } },
+        },
+      },
+      { $match: { _id: 'Michael Phalane' } },
+    ]);
+
+    console.log('Report:', reportData);
+  } catch (error) {
+    console.error('Error generating report:', error.message);
+  }
+};
+
+module.exports = { generateReport };

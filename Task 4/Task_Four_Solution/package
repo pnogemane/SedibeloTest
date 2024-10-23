@@ -1,0 +1,15 @@
+{
+  "name": "task4-solution",
+  "version": "1.0.0",
+  "description": "Task 4 backend solution for Sedibelo Technologies",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "axios-retry": "^3.1.9",
+    "mongoose": "^7.2.1",
+    "ws": "^8.5.0"
+  }
+}

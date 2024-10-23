@@ -1,0 +1,16 @@
+const connectDB = require('../config/db');
+const { generateReport } = require('./reporting');
+const { sendUserData } = require('./apiClient');
+const { setupWebSocket } = require('./websocketClient');
+
+
+connectDB();
+
+
+generateReport().then(() => console.log('Report generated successfully'));
+
+
+sendUserData().catch((err) => console.error('Error sending data:', err));
+
+
+setupWebSocket();

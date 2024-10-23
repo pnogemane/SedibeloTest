@@ -1,0 +1,3 @@
+npm install axios chart.js
+npm install -g @quasar/cli
+npm install axios chart.js

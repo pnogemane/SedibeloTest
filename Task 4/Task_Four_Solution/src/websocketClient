@@ -1,0 +1,25 @@
+const WebSocket = require('ws');
+
+const setupWebSocket = () => {
+  const ws = new WebSocket('wss://example.com/socket');
+
+  ws.on('open', () => {
+    console.log('WebSocket connection established');
+    ws.send('Hello Server!');
+  });
+
+  ws.on('message', (message) => {
+    console.log('Received:', message);
+  });
+
+  ws.on('error', (error) => {
+    console.error('WebSocket error:', error.message);
+  });
+
+  ws.on('close', () => {
+    console.log('WebSocket connection closed. Reconnecting...');
+    setTimeout(setupWebSocket, 5000); // Attempt reconnect
+  });
+};
+
+module.exports = { setupWebSocket };
